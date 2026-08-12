@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#efabc9"><title>Funkies — Antojos fuera de serie</title><meta name="description" content="Cookies rellenas, brownies y antojos artesanales en Lima."><style>
+
+:root {
+  --ink: #251a20;
+  --pink: #efabc9;
+  --pink-hot: #da1977;
+  --pink-soft: #f7d9e7;
+  --cream: #fff7ec;
+  --cocoa: #321e27;
+  --pistachio: #c9d996;
+  --line: rgba(37, 26, 32, 0.18);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+button, a { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button { color: inherit; }
+
+.demo-bar {
+  background: var(--ink);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: .17em;
+  padding: 8px 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.site-header {
+  align-items: center;
+  background: rgba(255, 247, 236, .9);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  min-height: 76px;
+  padding: 0 5vw;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.brand { align-items: center; display: flex; font-size: 22px; font-weight: 950; letter-spacing: -.04em; gap: 10px; width: max-content; }
+.brand-dot { align-items: center; background: var(--pink); border-radius: 50%; color: var(--pink-hot); display: flex; font-size: 20px; height: 38px; justify-content: center; width: 38px; }
+.site-header nav { display: flex; gap: 34px; }
+.site-header nav a { font-size: 12px; font-weight: 700; letter-spacing: .05em; }
+.cart-pill { align-items: center; background: transparent; border: 1px solid var(--ink); border-radius: 999px; cursor: pointer; display: flex; gap: 14px; justify-self: end; padding: 7px 8px 7px 16px; }
+.cart-pill span { font-size: 12px; font-weight: 700; }
+.cart-pill strong { align-items: center; background: var(--pink-hot); border-radius: 50%; color: #fff; display: flex; height: 30px; justify-content: center; min-width: 30px; }
+
+.hero { display: grid; grid-template-columns: 1.02fr .98fr; min-height: calc(100vh - 104px); }
+.hero-copy { align-self: center; padding: 8vw 6vw 6vw; }
+.eyebrow { align-items: center; display: flex; font-size: 11px; font-weight: 800; letter-spacing: .17em; margin: 0 0 25px; text-transform: uppercase; }
+.eyebrow span { background: var(--pink-hot); border-radius: 50%; height: 7px; margin-right: 10px; width: 7px; }
+.hero h1 { font-size: clamp(62px, 7.1vw, 112px); letter-spacing: -.075em; line-height: .87; margin: 0; max-width: 830px; }
+.hero h1 em { color: var(--pink-hot); display: block; font-family: Georgia, serif; font-weight: 400; }
+.hero-description { font-family: Georgia, serif; font-size: 18px; line-height: 1.6; margin: 32px 0; max-width: 560px; }
+.hero-actions { align-items: center; display: flex; gap: 27px; }
+.button { align-items: center; border-radius: 999px; display: inline-flex; font-size: 13px; font-weight: 800; gap: 30px; justify-content: center; padding: 16px 20px; }
+.button-dark { background: var(--ink); color: #fff; }
+.button-dark span { color: var(--pink); font-size: 17px; }
+.text-link { border-bottom: 1px solid var(--ink); font-size: 12px; font-weight: 800; padding-bottom: 6px; }
+.text-link span { margin-left: 9px; }
+.proof-row { border-top: 1px solid var(--line); display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr); margin-top: 58px; padding-top: 22px; }
+.proof-row div { display: flex; flex-direction: column; gap: 6px; }
+.proof-row strong { font-size: 11px; text-transform: uppercase; }
+.proof-row span { font-family: Georgia, serif; font-size: 12px; opacity: .62; }
+
+.hero-art { background: var(--pink) url('assets/funkies-hero.webp') center/cover no-repeat; min-height: 650px; overflow: hidden; position: relative; }
+.hero-art::before { background: linear-gradient(180deg, rgba(37,26,32,0) 55%, rgba(37,26,32,.46)); content: ""; inset: 0; position: absolute; }
+.hero-sticker { align-items: center; background: var(--cream); border: 1px solid var(--ink); border-radius: 50%; display: flex; flex-direction: column; font-family: Georgia, serif; font-size: 14px; height: 152px; justify-content: center; left: 7%; line-height: 1.1; position: absolute; text-align: center; top: 11%; transform: rotate(-11deg); width: 152px; z-index: 3; }
+.hero-sticker strong { font-family: Arial, sans-serif; font-size: 14px; margin-top: 4px; text-transform: uppercase; }
+.hero-sticker small { font-size: 8px; margin-top: 8px; }
+.cookie { background: #7e4d31; border: 2px solid #43271f; border-radius: 46% 54% 50% 50%; box-shadow: inset -25px -25px 0 rgba(50,25,19,.13), 0 25px 40px rgba(37,26,32,.18); position: absolute; }
+.cookie::before, .cookie::after, .cookie span { background: #281719; border-radius: 50%; content: ""; height: 12%; position: absolute; width: 12%; }
+.cookie::before { left: 26%; top: 22%; }
+.cookie::after { right: 22%; top: 45%; }
+.cookie span { bottom: 23%; left: 39%; }
+.cookie-one { height: 300px; left: 27%; top: 22%; transform: rotate(13deg); width: 300px; }
+.cookie-two { background: #9fb566; height: 235px; right: -3%; top: 45%; transform: rotate(-18deg); width: 235px; }
+.cookie-three { background: #60293a; bottom: -7%; height: 270px; left: 12%; transform: rotate(28deg); width: 270px; }
+.hero-art > .cookie { display: none; }
+.hero-note { bottom: 5%; color: var(--cream); font-size: 11px; font-weight: 800; letter-spacing: .12em; line-height: 1.5; position: absolute; right: 6%; text-align: right; text-transform: uppercase; }
+
+.menu-preview { background: var(--ink); color: var(--cream); padding: 100px 5vw 120px; }
+.section-heading { align-items: end; display: grid; gap: 30px; grid-template-columns: 1.4fr .6fr; margin-bottom: 48px; }
+.section-heading h2 { font-size: clamp(46px, 5.5vw, 82px); letter-spacing: -.065em; line-height: .95; margin: 0; }
+.section-heading > p { font-family: Georgia, serif; font-size: 15px; line-height: 1.6; margin: 0 0 8px; opacity: .7; }
+.filter-row { display: flex; gap: 8px; margin: -18px 0 32px; overflow-x: auto; padding-bottom: 4px; }
+.filter-row button { background: transparent; border: 1px solid rgba(255,247,236,.35); border-radius: 999px; color: var(--cream); cursor: pointer; font-size: 10px; font-weight: 900; letter-spacing: .09em; padding: 10px 15px; text-transform: uppercase; }
+.filter-row button.active { background: var(--cream); color: var(--ink); }
+.product-grid { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
+.product-card { background: var(--cream); color: var(--ink); min-width: 0; }
+.product-visual { background: #eec6d8; height: 270px; overflow: hidden; position: relative; }
+.product-card.pistachio .product-visual,
+.product-card.queen .product-visual { background: #dbe5b9 url('assets/funkies-pistachio.webp') center/cover no-repeat; }
+.product-card.velvet .product-visual { background: #b84a65 url('assets/funkies-red-velvet.webp') center/cover no-repeat; }
+.product-card.oreo .product-visual { background: #d9d0cb; }
+.product-card.brownie .product-visual { background: #b98d7a; }
+.product-card.cake .product-visual { background-color: #c46b80; }
+.product-index { font-family: Georgia, serif; font-size: 12px; left: 15px; opacity: .7; position: absolute; top: 15px; }
+.product-badge { background: var(--cream); border-radius: 999px; font-size: 9px; font-weight: 900; letter-spacing: .08em; padding: 7px 10px; position: absolute; right: 12px; text-transform: uppercase; top: 12px; z-index: 2; }
+.mini-cookie { background: #6e402c; border: 1px solid #41251f; border-radius: 49%; bottom: -10px; box-shadow: 0 22px 35px rgba(37,26,32,.22); height: 210px; left: 50%; position: absolute; transform: translateX(-50%) rotate(-8deg); width: 210px; }
+.mini-cookie::before, .mini-cookie::after, .mini-cookie i { background: #241316; border-radius: 50%; content: ""; height: 17px; position: absolute; width: 17px; }
+.mini-cookie::before { left: 46px; top: 45px; }
+.mini-cookie::after { right: 46px; top: 90px; }
+.mini-cookie i { bottom: 46px; left: 92px; }
+.velvet .mini-cookie { background: #713345; }
+.queen .mini-cookie, .pistachio .mini-cookie { background: #76634a; }
+.oreo .mini-cookie { background: #4a3a38; }
+.brownie .mini-cookie { background: #3c2221; border-radius: 18px; height: 180px; transform: translateX(-50%) rotate(-4deg); width: 220px; }
+.pistachio .mini-cookie, .queen .mini-cookie, .velvet .mini-cookie { display: none; }
+.product-info { padding: 24px; }
+.product-info > p { color: var(--pink-hot); font-size: 9px; font-weight: 900; letter-spacing: .13em; margin: 0 0 9px; text-transform: uppercase; }
+.product-info h3 { font-size: 25px; letter-spacing: -.04em; margin: 0 0 10px; }
+.product-info > span { display: block; font-family: Georgia, serif; font-size: 12px; line-height: 1.5; min-height: 55px; opacity: .66; }
+.product-action { align-items: center; border-top: 1px solid var(--line); display: flex; justify-content: space-between; margin-top: 18px; padding-top: 17px; }
+.product-action strong { font-size: 19px; }
+.product-action button { align-items: center; background: transparent; border: 0; cursor: pointer; display: flex; font-size: 10px; font-weight: 900; gap: 8px; text-transform: uppercase; }
+.product-action button b { align-items: center; background: var(--pink-hot); border-radius: 50%; color: #fff; display: flex; font-size: 17px; height: 27px; justify-content: center; width: 27px; }
+
+.packs-section { background: var(--pink); display: grid; gap: 8vw; grid-template-columns: .78fr 1.22fr; padding: 120px 6vw; }
+.packs-intro { align-self: center; }
+.packs-intro h2 { font-size: clamp(48px, 5.2vw, 82px); letter-spacing: -.065em; line-height: .92; margin: 0 0 26px; }
+.packs-intro h2 em { color: var(--cream); font-family: Georgia, serif; font-weight: 400; }
+.packs-intro > p:last-child { font-family: Georgia, serif; font-size: 16px; line-height: 1.6; max-width: 430px; }
+.pack-list { border-top: 1px solid var(--ink); }
+.pack-card { align-items: center; background: transparent; border: 0; border-bottom: 1px solid var(--ink); color: var(--ink); cursor: pointer; display: grid; gap: 22px; grid-template-columns: 48px 1fr auto; padding: 30px 5px; text-align: left; transition: background .2s, padding .2s; width: 100%; }
+.pack-card:hover { background: rgba(255,247,236,.3); padding-left: 18px; padding-right: 18px; }
+.pack-number { font-family: Georgia, serif; font-size: 13px; }
+.pack-copy { display: flex; flex-direction: column; gap: 4px; }
+.pack-copy small { font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.pack-copy strong { font-size: 29px; letter-spacing: -.04em; }
+.pack-copy em { font-family: Georgia, serif; font-size: 13px; opacity: .7; }
+.pack-price { align-items: flex-end; display: flex; flex-direction: column; font-size: 24px; font-weight: 900; }
+.pack-price b { border-bottom: 1px solid var(--ink); font-size: 9px; letter-spacing: .08em; margin-top: 10px; padding-bottom: 4px; text-transform: uppercase; }
+
+.ritual-section { background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; min-height: 760px; }
+.ritual-photo { align-items: center; background: var(--cocoa); display: flex; justify-content: center; overflow: hidden; position: relative; }
+.ritual-photo::before { border: 1px solid rgba(255,255,255,.25); border-radius: 50%; content: ""; height: 70%; position: absolute; width: 70%; }
+.ritual-photo img { border-radius: 50%; box-shadow: 0 25px 70px rgba(0,0,0,.3); max-width: 60%; position: relative; transform: rotate(-7deg); z-index: 1; }
+.ritual-photo > span { bottom: 5%; color: var(--pink); font-size: 10px; font-weight: 900; letter-spacing: .16em; line-height: 1.5; position: absolute; right: 5%; text-align: right; }
+.ritual-content { align-self: center; padding: 90px 9vw; }
+.ritual-content h2 { font-size: clamp(52px, 5vw, 78px); letter-spacing: -.06em; line-height: .92; margin: 0 0 42px; }
+.ritual-content ol { list-style: none; margin: 0 0 38px; padding: 0; }
+.ritual-content li { align-items: start; border-top: 1px solid var(--line); display: grid; gap: 22px; grid-template-columns: 42px 1fr; padding: 20px 0; }
+.ritual-content li b { color: var(--pink-hot); font-family: Georgia, serif; font-size: 13px; }
+.ritual-content li span { display: flex; flex-direction: column; font-family: Georgia, serif; font-size: 13px; gap: 6px; line-height: 1.4; opacity: .7; }
+.ritual-content li strong { font-family: Arial, sans-serif; font-size: 14px; opacity: 1; text-transform: uppercase; }
+.button-hot { background: var(--pink-hot); color: #fff; }
+
+.instagram-strip { align-items: center; background: var(--pistachio); display: flex; justify-content: space-between; padding: 55px 6vw; }
+.instagram-strip div { display: flex; flex-direction: column; gap: 6px; }
+.instagram-strip span { font-size: 9px; font-weight: 900; letter-spacing: .16em; }
+.instagram-strip strong { font-family: Georgia, serif; font-size: clamp(22px, 3vw, 42px); font-weight: 400; }
+.instagram-strip a { border-bottom: 1px solid var(--ink); font-size: 11px; font-weight: 900; padding-bottom: 6px; text-transform: uppercase; }
+footer { align-items: start; background: var(--ink); color: var(--cream); display: grid; gap: 40px; grid-template-columns: 2fr 1fr 1fr auto; padding: 70px 6vw; }
+.footer-brand { color: var(--pink); font-size: clamp(48px, 7vw, 105px); font-weight: 950; letter-spacing: -.08em; line-height: .8; }
+.footer-brand span { font-size: 12px; vertical-align: top; }
+footer > div:not(.footer-brand) { display: flex; flex-direction: column; font-size: 11px; gap: 9px; }
+footer > div:not(.footer-brand) strong { text-transform: uppercase; }
+footer > div:not(.footer-brand) span, footer > div:not(.footer-brand) a { font-family: Georgia, serif; opacity: .65; }
+footer small { align-self: end; font-size: 8px; letter-spacing: .09em; opacity: .45; text-transform: uppercase; }
+
+.overlay { align-items: stretch; background: rgba(31,18,25,.66); display: flex; inset: 0; justify-content: flex-end; position: fixed; z-index: 100; }
+.cart-drawer { background: var(--cream); box-shadow: -20px 0 70px rgba(0,0,0,.22); display: grid; grid-template-rows: auto 1fr auto; height: 100%; max-width: 520px; width: 100%; }
+.drawer-head, .builder-head { align-items: start; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 30px 34px 24px; }
+.drawer-head p, .builder-head p { color: var(--pink-hot); font-size: 9px; font-weight: 900; letter-spacing: .13em; margin: 0 0 5px; text-transform: uppercase; }
+.drawer-head h2, .builder-head h2 { font-size: 32px; letter-spacing: -.05em; margin: 0; }
+.drawer-head > button, .builder-head > button { background: transparent; border: 1px solid var(--ink); border-radius: 50%; cursor: pointer; font-size: 25px; height: 38px; line-height: 1; width: 38px; }
+.drawer-body { overflow-y: auto; padding: 8px 34px; }
+.empty-cart { align-items: center; display: flex; flex-direction: column; justify-content: center; min-height: 420px; text-align: center; }
+.empty-cart > span { font-size: 55px; }
+.empty-cart h3 { font-size: 28px; margin: 16px 0 5px; }
+.empty-cart p { font-family: Georgia, serif; font-size: 14px; line-height: 1.5; max-width: 280px; opacity: .65; }
+.empty-cart button, .keep-shopping { background: transparent; border: 0; border-bottom: 1px solid var(--ink); cursor: pointer; font-size: 10px; font-weight: 900; padding: 6px 0; text-transform: uppercase; }
+.cart-line { align-items: center; border-bottom: 1px solid var(--line); display: grid; gap: 14px; grid-template-columns: 76px 1fr auto; padding: 18px 0; }
+.cart-thumb { background-color: var(--pink-soft); background-position: center; background-size: cover; height: 76px; width: 76px; }
+.cart-thumb.oreo { background: #4a3a38; }
+.cart-thumb.brownie { background: #3c2221; }
+.box-thumb { align-items: center; background: var(--pink); display: flex; font-size: 28px; font-weight: 900; justify-content: center; }
+.cart-line > div:nth-child(2) { display: flex; flex-direction: column; min-width: 0; }
+.cart-line > div:nth-child(2) strong { font-size: 14px; }
+.cart-line > div:nth-child(2) span { display: -webkit-box; font-family: Georgia, serif; font-size: 10px; line-height: 1.4; margin-top: 5px; opacity: .6; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.qty { align-items: center; border: 1px solid var(--line); border-radius: 999px; display: flex; }
+.qty button { background: transparent; border: 0; cursor: pointer; height: 30px; width: 30px; }
+.qty button:disabled { cursor: not-allowed; opacity: .25; }
+.qty b { font-size: 11px; min-width: 14px; text-align: center; }
+.drawer-foot { border-top: 1px solid var(--line); padding: 22px 34px 28px; }
+.drawer-foot > div { display: flex; justify-content: space-between; }
+.drawer-foot > div strong { font-size: 22px; }
+.drawer-foot > small { display: block; font-family: Georgia, serif; font-size: 10px; margin: 7px 0 16px; opacity: .6; }
+.checkout-button { align-items: center; background: var(--ink); border: 0; color: #fff; cursor: pointer; display: flex; font-size: 11px; font-weight: 900; justify-content: space-between; letter-spacing: .06em; padding: 17px 19px; text-transform: uppercase; width: 100%; }
+.checkout-button:disabled { cursor: not-allowed; opacity: .35; }
+.checkout-button span { color: var(--pink); font-size: 18px; }
+.keep-shopping { display: block; margin: 14px auto 0; }
+
+.pack-overlay { align-items: center; justify-content: center; padding: 25px; }
+.pack-builder { background: var(--cream); max-height: 92vh; max-width: 700px; overflow-y: auto; width: 100%; }
+.builder-progress { background: #eadfe2; height: 5px; position: relative; }
+.builder-progress > span { background: var(--pink-hot); height: 100%; left: 0; position: absolute; top: 0; transition: width .2s; }
+.builder-progress p { font-size: 9px; font-weight: 900; letter-spacing: .08em; margin: 12px 34px 0; text-align: right; text-transform: uppercase; }
+.builder-flavors { padding: 13px 34px 20px; }
+.builder-flavor { align-items: center; border-bottom: 1px solid var(--line); display: grid; gap: 15px; grid-template-columns: 65px 1fr auto; padding: 13px 0; }
+.flavor-dot { background: var(--pink); background-position: center; background-size: cover; border-radius: 50%; height: 65px; width: 65px; }
+.flavor-dot.oreo { background: #4a3a38; }
+.builder-flavor > div:nth-child(2) { display: flex; flex-direction: column; gap: 4px; }
+.builder-flavor > div:nth-child(2) span { font-family: Georgia, serif; font-size: 11px; opacity: .6; }
+.pack-builder > .checkout-button { margin: 0 34px 30px; width: calc(100% - 68px); }
+
+.checkout-shell { background: var(--cream); inset: 0; overflow-y: auto; position: fixed; z-index: 120; }
+.checkout-header { align-items: center; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto 1fr; min-height: 82px; padding: 0 5vw; }
+.checkout-header > button { background: transparent; border: 0; cursor: pointer; font-size: 11px; font-weight: 900; justify-self: end; text-transform: uppercase; }
+.checkout-steps { align-items: center; display: flex; }
+.checkout-steps b { align-items: center; background: transparent; border: 1px solid var(--line); border-radius: 50%; display: flex; font-size: 9px; height: 25px; justify-content: center; position: relative; width: 25px; }
+.checkout-steps b.active { background: var(--pink-hot); border-color: var(--pink-hot); color: white; }
+.checkout-steps b span { color: var(--ink); font-size: 8px; left: 50%; letter-spacing: .08em; position: absolute; text-transform: uppercase; top: 32px; transform: translateX(-50%); }
+.checkout-steps i { background: var(--line); height: 1px; width: 75px; }
+.checkout-layout { display: grid; grid-template-columns: 1fr 390px; margin: 0 auto; max-width: 1180px; min-height: calc(100vh - 83px); }
+.checkout-form { padding: 80px 8vw 90px 20px; }
+.checkout-form section { margin: 0 auto; max-width: 660px; }
+.checkout-form h2 { font-size: clamp(42px, 5vw, 70px); letter-spacing: -.06em; line-height: .95; margin: 0 0 42px; }
+.checkout-form label { display: flex; flex-direction: column; font-size: 9px; font-weight: 900; gap: 8px; letter-spacing: .09em; margin-bottom: 19px; text-transform: uppercase; }
+.checkout-form input, .checkout-form select, .checkout-form textarea { background: #fffdf8; border: 1px solid var(--line); border-radius: 0; color: var(--ink); font-family: Arial, sans-serif; font-size: 14px; outline: 0; padding: 15px; text-transform: none; width: 100%; }
+.checkout-form input:focus, .checkout-form select:focus, .checkout-form textarea:focus { border-color: var(--pink-hot); }
+.checkout-form textarea { min-height: 90px; resize: vertical; }
+.field-row { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
+.choice-grid { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin-bottom: 22px; }
+.choice-grid button { background: transparent; border: 1px solid var(--line); cursor: pointer; display: flex; flex-direction: column; padding: 20px; text-align: left; }
+.choice-grid button.active { background: var(--pink-soft); border-color: var(--pink-hot); }
+.choice-grid button b { font-size: 15px; }
+.choice-grid button span { font-family: Georgia, serif; font-size: 11px; margin-top: 5px; opacity: .6; }
+.form-nav { align-items: center; display: flex; gap: 25px; justify-content: flex-end; margin-top: 25px; }
+.form-nav > button:first-child { background: transparent; border: 0; cursor: pointer; font-size: 10px; font-weight: 900; text-transform: uppercase; }
+.form-nav .checkout-button { width: auto; min-width: 260px; }
+.order-summary { background: var(--pink-soft); border-left: 1px solid var(--line); padding: 72px 42px; }
+.order-summary > p { color: var(--pink-hot); font-size: 9px; font-weight: 900; letter-spacing: .12em; margin: 0; text-transform: uppercase; }
+.order-summary h3 { font-size: 34px; letter-spacing: -.04em; margin: 6px 0 32px; }
+.summary-lines { border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); padding: 14px 0; }
+.summary-lines div, .summary-totals div { display: flex; font-size: 11px; gap: 15px; justify-content: space-between; padding: 8px 0; }
+.summary-lines span { font-family: Georgia, serif; }
+.summary-totals { padding-top: 12px; }
+.summary-totals div:last-child { border-top: 1px solid var(--line); font-size: 18px; margin-top: 8px; padding-top: 17px; }
+.order-summary > small { display: block; font-family: Georgia, serif; font-size: 9px; margin-top: 17px; opacity: .55; }
+.payment-list { display: grid; gap: 10px; margin-bottom: 20px; }
+.payment-list button { align-items: center; background: transparent; border: 1px solid var(--line); cursor: pointer; display: flex; gap: 15px; padding: 16px; text-align: left; }
+.payment-list button.active { background: var(--pink-soft); border-color: var(--pink-hot); }
+.payment-list button i { color: var(--pink-hot); font-style: normal; }
+.payment-list button span { display: flex; flex-direction: column; gap: 4px; }
+.payment-list button b { font-size: 13px; }
+.payment-list button small { font-family: Georgia, serif; opacity: .6; }
+.demo-payment { background: #f1e7cf; border-left: 3px solid #c89e37; margin: 20px 0; padding: 16px; }
+.demo-payment strong { font-size: 10px; text-transform: uppercase; }
+.demo-payment p { font-family: Georgia, serif; font-size: 11px; line-height: 1.5; margin: 5px 0 0; opacity: .7; }
+.checkout-form label.terms { align-items: start; flex-direction: row; font-family: Georgia, serif; font-size: 10px; font-weight: 400; letter-spacing: 0; line-height: 1.5; text-transform: none; }
+.terms input { margin: 2px 0 0; width: auto; }
+.order-success { align-items: center; display: flex; flex-direction: column; justify-content: center; margin: 0 auto; max-width: 700px; min-height: calc(100vh - 83px); padding: 60px 20px; text-align: center; }
+.order-success > span { align-items: center; background: var(--pistachio); border-radius: 50%; display: flex; font-size: 35px; height: 80px; justify-content: center; width: 80px; }
+.order-success > p:first-of-type { color: var(--pink-hot); font-size: 9px; font-weight: 900; letter-spacing: .14em; margin-top: 25px; text-transform: uppercase; }
+.order-success h2 { font-size: clamp(50px, 7vw, 90px); letter-spacing: -.07em; line-height: .9; margin: 8px 0 22px; }
+.order-success > strong { border: 1px solid var(--ink); font-size: 13px; letter-spacing: .15em; padding: 12px 20px; }
+.order-success > p:last-of-type { font-family: Georgia, serif; font-size: 13px; line-height: 1.6; max-width: 500px; opacity: .65; }
+.order-success > div { display: flex; gap: 15px; margin-top: 20px; }
+.order-success a, .order-success button { background: var(--ink); border: 0; color: #fff; cursor: pointer; font-size: 10px; font-weight: 900; padding: 16px 19px; text-transform: uppercase; }
+.order-success button { background: transparent; border: 1px solid var(--ink); color: var(--ink); }
+
+@media (max-width: 980px) {
+  .site-header { grid-template-columns: 1fr 1fr; }
+  .site-header nav { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy { padding: 80px 6vw 55px; }
+  .hero-art { min-height: 620px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .packs-section { grid-template-columns: 1fr; }
+  .ritual-section { grid-template-columns: 1fr; }
+  .ritual-photo { min-height: 580px; }
+  footer { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+  .checkout-layout { grid-template-columns: 1fr 330px; }
+  .checkout-form { padding-left: 30px; padding-right: 30px; }
+}
+@media (max-width: 620px) {
+  .demo-bar { font-size: 8px; }
+  .site-header { min-height: 66px; padding: 0 18px; }
+  .brand { font-size: 18px; }
+  .brand-dot { height: 32px; width: 32px; }
+  .cart-pill span { display: none; }
+  .hero h1 { font-size: 58px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .proof-row { grid-template-columns: 1fr; }
+  .hero-art { min-height: 500px; }
+  .cookie-one { height: 230px; left: 24%; top: 24%; width: 230px; }
+  .cookie-two { height: 175px; width: 175px; }
+  .cookie-three { height: 190px; width: 190px; }
+  .hero-sticker { height: 118px; width: 118px; }
+  .section-heading { align-items: start; grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: 1fr; }
+  .packs-section { padding: 80px 20px; }
+  .pack-card { grid-template-columns: 36px 1fr; }
+  .pack-price { align-items: flex-start; grid-column: 2; }
+  .ritual-photo { min-height: 420px; }
+  .ritual-content { padding: 70px 22px; }
+  .instagram-strip { align-items: flex-start; flex-direction: column; gap: 25px; padding: 40px 22px; }
+  footer { grid-template-columns: 1fr; padding: 60px 22px; }
+  .footer-brand { grid-column: auto; }
+  .drawer-head, .drawer-body, .drawer-foot { padding-left: 20px; padding-right: 20px; }
+  .cart-line { grid-template-columns: 62px 1fr; }
+  .cart-thumb { height: 62px; width: 62px; }
+  .cart-line > .qty { grid-column: 2; justify-self: start; }
+  .pack-overlay { padding: 0; }
+  .pack-builder { height: 100%; max-height: none; }
+  .builder-head, .builder-flavors { padding-left: 20px; padding-right: 20px; }
+  .builder-progress p { margin-right: 20px; }
+  .pack-builder > .checkout-button { margin-left: 20px; margin-right: 20px; width: calc(100% - 40px); }
+  .builder-flavor { grid-template-columns: 52px 1fr auto; }
+  .flavor-dot { height: 52px; width: 52px; }
+  .checkout-header { grid-template-columns: 1fr auto; padding: 0 18px; }
+  .checkout-header .brand { font-size: 16px; }
+  .checkout-steps { bottom: 0; grid-column: 1 / -1; justify-content: center; left: 0; position: absolute; right: 0; }
+  .checkout-header { padding-bottom: 28px; position: relative; }
+  .checkout-layout { display: flex; flex-direction: column-reverse; }
+  .order-summary { border-bottom: 1px solid var(--line); border-left: 0; padding: 32px 22px; }
+  .checkout-form { padding: 55px 22px 80px; }
+  .field-row, .choice-grid { grid-template-columns: 1fr; }
+  .form-nav { align-items: stretch; flex-direction: column-reverse; }
+  .form-nav .checkout-button { min-width: 0; width: 100%; }
+  .order-success > div { flex-direction: column; width: 100%; }
+}
+</style></head>
+<body><main>
+  <div class="demo-bar">Concepto de tienda · precios y disponibilidad por confirmar con Funkies</div>
+  <header class="site-header"><a class="brand" href="#inicio"><span class="brand-dot">F</span><span>FUNKIES</span></a><nav><a href="#sabores">Sabores</a><a href="#packs">Packs</a><a href="#como-pedir">Cómo pedir</a></nav><button class="cart-pill" id="cart-button" type="button"><span>Tu caja</span><strong id="cart-count">0</strong></button></header>
+  <section class="hero" id="inicio"><div class="hero-copy"><p class="eyebrow"><span></span> Cookies rellenas · Lima</p><h1>Tu antojo acaba de ponerse <em>funky.</em></h1><p class="hero-description">Galletas gruesas, centros que se derriten y sabores que no nacieron para pasar desapercibidos.</p><div class="hero-actions"><a class="button button-dark" href="#sabores">Quiero mi caja <span>↗</span></a><a class="text-link" href="#sabores">Ver todos los sabores <span>↓</span></a></div><div class="proof-row"><div><strong>Horneadas</strong><span>en pequeños lotes</span></div><div><strong>Relleno real</strong><span>hasta el centro</span></div><div><strong>Fines de semana</strong><span>Museo Metropolitano</span></div></div></div><div class="hero-art"><div class="hero-sticker">hechas para<br><strong>romper la rutina*</strong><small>*con muchísimo relleno</small></div><p class="hero-note">Gruesas. Rellenas.<br>Ridículamente buenas.</p></div></section>
+  <section class="menu-preview" id="sabores"><div class="section-heading"><div><p class="eyebrow"><span></span> El lineup</p><h2>Elige tu nueva obsesión.</h2></div><p>Empieza por las favoritas de la comunidad. Después puedes fingir que vas a compartir.</p></div><div class="filter-row"><button class="active" data-filter="Todos">Todos</button><button class="" data-filter="Cookies">Cookies</button><button class="" data-filter="Brownies">Brownies</button><button class="" data-filter="Cakes">Cakes</button></div><div class="product-grid">
+  <article class="product-card pistachio" data-category="Cookies">
+    <div class="product-visual" style="background-image:url('assets/funkies-pistachio.webp')">
+      <span class="product-index">01</span><span class="product-badge">Top 1</span>
+      
+    </div>
+    <div class="product-info"><p>La best seller</p><h3>Pistacho Dubai</h3><span>Masa de chocolate, pistacho cremoso, kataifi y un golpe ácido de frambuesa.</span>
+      <div class="product-action"><strong>S/ 15</strong><button type="button" data-add="pistacho-dubai"><span>Agregar</span><b>+</b></button></div>
+    </div>
+  </article>
+  <article class="product-card queen" data-category="Cookies">
+    <div class="product-visual" style="background-image:url('assets/funkies-pistachio.webp')">
+      <span class="product-index">02</span><span class="product-badge">Favorita</span>
+      
+    </div>
+    <div class="product-info"><p>La reina del top 3</p><h3>Queen Pistacho</h3><span>Cookie chunky rellena de crema de pistacho y acabado crocante.</span>
+      <div class="product-action"><strong>S/ 14</strong><button type="button" data-add="queen-pistacho"><span>Agregar</span><b>+</b></button></div>
+    </div>
+  </article>
+  <article class="product-card velvet" data-category="Cookies">
+    <div class="product-visual" style="background-image:url('assets/funkies-red-velvet.webp')">
+      <span class="product-index">03</span><span class="product-badge">Icónica</span>
+      
+    </div>
+    <div class="product-info"><p>Suave + intensa</p><h3>Red Velvet</h3><span>Red velvet rellena de Nutella y coronada con marshmallow tostado.</span>
+      <div class="product-action"><strong>S/ 13</strong><button type="button" data-add="red-velvet"><span>Agregar</span><b>+</b></button></div>
+    </div>
+  </article>
+  <article class="product-card oreo" data-category="Cookies">
+    <div class="product-visual" >
+      <span class="product-index">04</span><span class="product-badge">Chocolate lover</span>
+      <div class="mini-cookie"><i></i></div>
+    </div>
+    <div class="product-info"><p>Cero autocontrol</p><h3>Oreotela</h3><span>Cookie rellena de Nutella con trocitos de Oreo en cada mordida.</span>
+      <div class="product-action"><strong>S/ 12</strong><button type="button" data-add="oreotela"><span>Agregar</span><b>+</b></button></div>
+    </div>
+  </article>
+  <article class="product-card brownie" data-category="Brownies">
+    <div class="product-visual" >
+      <span class="product-index">05</span><span class="product-badge">Extra chocolate</span>
+      <div class="mini-cookie"><i></i></div>
+    </div>
+    <div class="product-info"><p>Centro fudgy</p><h3>Brownie Melcochudo</h3><span>Chocolate intenso, bordes suaves y ese centro húmedo que lo cambia todo.</span>
+      <div class="product-action"><strong>S/ 12</strong><button type="button" data-add="brownie"><span>Agregar</span><b>+</b></button></div>
+    </div>
+  </article>
+  <article class="product-card cake" data-category="Cakes">
+    <div class="product-visual" style="background-image:url('assets/funkies-red-velvet.webp')">
+      <span class="product-index">06</span><span class="product-badge">Edición dulce</span>
+      
+    </div>
+    <div class="product-info"><p>Para compartir</p><h3>Keka Red Velvet</h3><span>La versión suave y esponjosa del sabor más querido de Funkies.</span>
+      <div class="product-action"><strong>S/ 14</strong><button type="button" data-add="keka-red-velvet"><span>Agregar</span><b>+</b></button></div>
+    </div>
+  </article></div></section>
+  <section class="packs-section" id="packs"><div class="packs-intro"><p class="eyebrow"><span></span> Arma tu combo</p><h2>Más cookies.<br><em>Mejores decisiones.</em></h2><p>Combina sabores y convierte una “probadita” en un plan perfectamente defendible.</p></div><div class="pack-list">
+  <button class="pack-card" type="button" data-pack="2">
+    <span class="pack-number">01</span><span class="pack-copy"><small>para probar sin miedo</small><strong>Dúo Funky</strong><em>2 cookies a elección</em></span>
+    <span class="pack-price">S/ 26<b>Armar box ↗</b></span>
+  </button>
+  <button class="pack-card" type="button" data-pack="4">
+    <span class="pack-number">02</span><span class="pack-copy"><small>la más pedida</small><strong>Box Favoritas</strong><em>4 cookies a elección</em></span>
+    <span class="pack-price">S/ 49<b>Armar box ↗</b></span>
+  </button>
+  <button class="pack-card" type="button" data-pack="6">
+    <span class="pack-number">03</span><span class="pack-copy"><small>mejor precio por cookie</small><strong>Full Funkies</strong><em>6 cookies a elección</em></span>
+    <span class="pack-price">S/ 70<b>Armar box ↗</b></span>
+  </button></div></section>
+  <section class="ritual-section" id="como-pedir"><div class="ritual-photo"><img src="assets/funkies-logo.webp" alt="Logo rosado de Funkies"><span>HORNEADO<br>EN LIMA</span></div><div class="ritual-content"><p class="eyebrow"><span></span> Del click a la mordida</p><h2>Un ritual de<br>tres pasos.</h2><ol><li><b>01</b><span><strong>Elige tu mood</strong>Una favorita, un mix o la caja que resuelve la reunión.</span></li><li><b>02</b><span><strong>Agenda tu entrega</strong>Selecciona delivery o recojo y la fecha disponible.</span></li><li><b>03</b><span><strong>Confirma y disfruta</strong>Te mostramos el resumen completo antes de confirmar.</span></li></ol><button class="button button-hot" data-pack="4">Armar mi box <span>↗</span></button></div></section>
+  <section class="instagram-strip"><div><span>@FUNKIES.PE</span><strong>Lo rico también entra por los ojos.</strong></div><a href="https://www.instagram.com/funkies.pe/" target="_blank" rel="noreferrer">Seguir en Instagram ↗</a></section>
+  <footer><div class="footer-brand">FUNKIES<span>®</span></div><div><strong>Cookies, brownies y más.</strong><span>Hecho en Lima, Perú.</span></div><div><strong>Pedidos</strong><a href="https://www.instagram.com/funkies.pe/" target="_blank" rel="noreferrer">@funkies.pe ↗</a></div><small>Propuesta web no oficial · 2026</small></footer>
+</main><div id="portal"></div><script>
+const PRODUCTS = [{"id":"pistacho-dubai","name":"Pistacho Dubai","kicker":"La best seller","description":"Masa de chocolate, pistacho cremoso, kataifi y un golpe ácido de frambuesa.","price":15,"badge":"Top 1","tone":"pistachio","image":"assets/funkies-pistachio.webp","category":"Cookies"},{"id":"queen-pistacho","name":"Queen Pistacho","kicker":"La reina del top 3","description":"Cookie chunky rellena de crema de pistacho y acabado crocante.","price":14,"badge":"Favorita","tone":"queen","image":"assets/funkies-pistachio.webp","category":"Cookies"},{"id":"red-velvet","name":"Red Velvet","kicker":"Suave + intensa","description":"Red velvet rellena de Nutella y coronada con marshmallow tostado.","price":13,"badge":"Icónica","tone":"velvet","image":"assets/funkies-red-velvet.webp","category":"Cookies"},{"id":"oreotela","name":"Oreotela","kicker":"Cero autocontrol","description":"Cookie rellena de Nutella con trocitos de Oreo en cada mordida.","price":12,"badge":"Chocolate lover","tone":"oreo","category":"Cookies"},{"id":"brownie","name":"Brownie Melcochudo","kicker":"Centro fudgy","description":"Chocolate intenso, bordes suaves y ese centro húmedo que lo cambia todo.","price":12,"badge":"Extra chocolate","tone":"brownie","category":"Brownies"},{"id":"keka-red-velvet","name":"Keka Red Velvet","kicker":"Para compartir","description":"La versión suave y esponjosa del sabor más querido de Funkies.","price":14,"badge":"Edición dulce","tone":"cake","image":"assets/funkies-red-velvet.webp","category":"Cakes"}];
+const PACKS = [{"size":2,"price":26,"label":"Dúo Funky","saving":"para probar sin miedo"},{"size":4,"price":49,"label":"Box Favoritas","saving":"la más pedida"},{"size":6,"price":70,"label":"Full Funkies","saving":"mejor precio por cookie"}];
+const DELIVERY = {Surco:7,Miraflores:8,"San Borja":8,Barranco:9,"La Molina":10,"Otro distrito":12};
+let cart = {}, boxes = [], packSize = 0, packDraft = {}, step = 1, fulfillment = "delivery", district = "Surco", payment = "yape";
+const portal = document.getElementById("portal");
+const byId = id => PRODUCTS.find(p => p.id === id);
+const itemCount = () => Object.values(cart).reduce((a,b)=>a+b,0) + boxes.reduce((a,b)=>a+b.size*b.quantity,0);
+const subtotal = () => PRODUCTS.reduce((sum,p)=>sum+(cart[p.id]||0)*p.price,0)+boxes.reduce((sum,b)=>sum+b.price*b.quantity,0);
+const money = value => "S/ " + value.toFixed(2);
+function sync(){
+  const count=itemCount();
+  document.getElementById("cart-count").textContent=count;
+  document.querySelectorAll("[data-add]").forEach(btn=>{
+    const qty=cart[btn.dataset.add]||0;
+    btn.querySelector("span").textContent=qty ? qty+" en caja" : "Agregar";
+  });
+}
+function closePortal(){ portal.innerHTML=""; document.body.style.overflow=""; }
+function showDrawer(){
+  document.body.style.overflow="hidden";
+  const lines = PRODUCTS.filter(p=>cart[p.id]).map(p=>'<div class="cart-line"><div class="cart-thumb '+p.tone+'" '+(p.image?'style="background-image:url(\''+p.image+'\')"':'')+'></div><div><strong>'+p.name+'</strong><span>'+money(p.price)+' c/u</span></div><div class="qty"><button data-qty="'+p.id+'" data-delta="-1">−</button><b>'+cart[p.id]+'</b><button data-qty="'+p.id+'" data-delta="1">+</button></div></div>').join("");
+  const boxLines = boxes.map(b=>'<div class="cart-line box-line"><div class="cart-thumb box-thumb">'+b.size+'</div><div><strong>Box de '+b.size+'</strong><span>'+Object.entries(b.flavors).map(([id,q])=>q+'× '+byId(id).name).join(", ")+'</span></div><div class="qty"><button data-boxqty="'+b.id+'" data-delta="-1">−</button><b>'+b.quantity+'</b><button data-boxqty="'+b.id+'" data-delta="1">+</button></div></div>').join("");
+  const empty='<div class="empty-cart"><span>🍪</span><h3>Tu caja pide auxilio.</h3><p>Agrega una favorita o arma un box con varios sabores.</p><button data-close>Explorar sabores</button></div>';
+  portal.innerHTML='<div class="overlay"><aside class="cart-drawer" role="dialog" aria-modal="true"><div class="drawer-head"><div><p>Tu selección</p><h2>Tu caja Funkies</h2></div><button data-close aria-label="Cerrar">×</button></div><div class="drawer-body">'+(itemCount()?lines+boxLines:empty)+'</div><div class="drawer-foot"><div><span>Subtotal</span><strong>'+money(subtotal())+'</strong></div><small>El delivery se calcula en el siguiente paso.</small><button class="checkout-button" '+(itemCount()?'':'disabled')+' data-checkout>Continuar pedido <span>→</span></button><button class="keep-shopping" data-close>Seguir eligiendo</button></div></aside></div>';
+}
+function showPack(size){
+  packSize=size; packDraft={}; document.body.style.overflow="hidden"; renderPack();
+}
+function renderPack(){
+  const count=Object.values(packDraft).reduce((a,b)=>a+b,0);
+  const flavors=PRODUCTS.filter(p=>p.category==="Cookies").map(p=>'<div class="builder-flavor"><div class="flavor-dot '+p.tone+'" '+(p.image?'style="background-image:url(\''+p.image+'\')"':'')+'></div><div><strong>'+p.name+'</strong><span>'+p.kicker+'</span></div><div class="qty"><button data-flavor="'+p.id+'" data-delta="-1" '+(packDraft[p.id]?'':'disabled')+'>−</button><b>'+(packDraft[p.id]||0)+'</b><button data-flavor="'+p.id+'" data-delta="1" '+(count>=packSize?'disabled':'')+'>+</button></div></div>').join("");
+  const selected=PACKS.find(p=>p.size===packSize);
+  portal.innerHTML='<div class="overlay pack-overlay"><section class="pack-builder" role="dialog" aria-modal="true"><div class="builder-head"><div><p>Box de '+packSize+'</p><h2>Elige '+packSize+' sabores.</h2></div><button data-close>×</button></div><div class="builder-progress"><span style="width:'+(count/packSize*100)+'%"></span><p>'+count+' de '+packSize+' elegidas</p></div><div class="builder-flavors">'+flavors+'</div><button class="checkout-button" data-addpack '+(count===packSize?'':'disabled')+'>'+(count===packSize?'Agregar box · '+money(selected.price):'Faltan '+(packSize-count)+' por elegir')+' <span>→</span></button></section></div>';
+}
+function summary(){
+  const lines=PRODUCTS.filter(p=>cart[p.id]).map(p=>'<div><span>'+cart[p.id]+'× '+p.name+'</span><b>'+money(cart[p.id]*p.price)+'</b></div>').join("")+boxes.map(b=>'<div><span>'+b.quantity+'× Box de '+b.size+'</span><b>'+money(b.quantity*b.price)+'</b></div>').join("");
+  const delivery=fulfillment==="pickup"?0:DELIVERY[district], total=subtotal()+delivery;
+  return '<aside class="order-summary"><p>Tu pedido</p><h3>'+itemCount()+' antojos</h3><div class="summary-lines">'+lines+'</div><div class="summary-totals"><div><span>Subtotal</span><b>'+money(subtotal())+'</b></div><div><span>'+(fulfillment==="pickup"?"Recojo":"Delivery · "+district)+'</span><b>'+(delivery?money(delivery):"Gratis")+'</b></div><div><strong>Total</strong><strong>'+money(total)+'</strong></div></div><small>Precios referenciales para esta propuesta web.</small></aside>';
+}
+function showCheckout(){
+  step=1; document.body.style.overflow="hidden"; renderCheckout();
+}
+function renderCheckout(){
+  const header='<header class="checkout-header"><span class="brand"><b class="brand-dot">F</b>FUNKIES</span><div class="checkout-steps"><b class="'+(step>=1?'active':'')+'">1 <span>Datos</span></b><i></i><b class="'+(step>=2?'active':'')+'">2 <span>Entrega</span></b><i></i><b class="'+(step>=3?'active':'')+'">3 <span>Pago</span></b></div><button data-close>Cerrar ×</button></header>';
+  let form='';
+  if(step===1) form='<section><p class="eyebrow"><span></span> Primero, tú</p><h2>¿A nombre de quién va el antojo?</h2><label>Nombre y apellido<input required placeholder="Ej. Valentina Flores"></label><div class="field-row"><label>WhatsApp<input required type="tel" placeholder="999 999 999"></label><label>Correo<input required type="email" placeholder="tu@email.com"></label></div><button class="checkout-button" type="button" data-next="2">Continuar a entrega <span>→</span></button></section>';
+  if(step===2) form='<section><p class="eyebrow"><span></span> Cómo llega</p><h2>¿Delivery o recojo?</h2><div class="choice-grid"><button class="'+(fulfillment==="delivery"?'active':'')+'" type="button" data-fulfillment="delivery"><b>Delivery</b><span>Lo llevamos hasta ti</span></button><button class="'+(fulfillment==="pickup"?'active':'')+'" type="button" data-fulfillment="pickup"><b>Recojo</b><span>Punto coordinado</span></button></div>'+(fulfillment==="delivery"?'<label>Distrito<select id="district">'+Object.keys(DELIVERY).map(x=>'<option '+(x===district?'selected':'')+'>'+x+'</option>').join("")+'</select></label><label>Dirección<input required placeholder="Calle, número y referencia"></label>':'')+'<div class="field-row"><label>Fecha preferida<input required type="date"></label><label>Rango horario<select><option>12:00 – 15:00</option><option>15:00 – 18:00</option><option>18:00 – 21:00</option></select></label></div><label>Nota para Funkies<textarea placeholder="Dedicatoria, alergias o alguna indicación..."></textarea></label><div class="form-nav"><button type="button" data-next="1">← Atrás</button><button class="checkout-button" type="button" data-next="3">Continuar al pago <span>→</span></button></div></section>';
+  if(step===3){ const delivery=fulfillment==="pickup"?0:DELIVERY[district], total=subtotal()+delivery; form='<section><p class="eyebrow"><span></span> Último paso</p><h2>Elige cómo pagar.</h2><div class="payment-list">'+[["yape","Yape o Plin","Confirmación por captura"],["card","Tarjeta","Pasarela segura en la versión final"],["cash","Contraentrega","Sujeto a zona de reparto"]].map(x=>'<button class="'+(payment===x[0]?'active':'')+'" type="button" data-payment="'+x[0]+'"><i>'+(payment===x[0]?'●':'○')+'</i><span><b>'+x[1]+'</b><small>'+x[2]+'</small></span></button>').join("")+'</div><div class="demo-payment"><strong>Modo demostración</strong><p>No se solicitarán datos de tarjeta ni se realizará un cobro. Este paso muestra cómo quedaría la experiencia comercial.</p></div><label class="terms"><input id="terms" type="checkbox"> <span>Revisé mi pedido y entiendo que precios, stock y fecha deben ser confirmados por Funkies.</span></label><div class="form-nav"><button type="button" data-next="2">← Atrás</button><button class="checkout-button" type="button" data-finish>Confirmar demo · '+money(total)+' <span>→</span></button></div></section>'; }
+  portal.innerHTML='<div class="checkout-shell">'+header+'<div class="checkout-layout"><div class="checkout-form">'+form+'</div>'+summary()+'</div></div>';
+}
+function success(){
+  if(!document.getElementById("terms").checked){document.getElementById("terms").focus();return;}
+  const code="FUNKY-"+Math.floor(10000+Math.random()*90000);
+  portal.innerHTML='<div class="checkout-shell"><header class="checkout-header"><span class="brand"><b class="brand-dot">F</b>FUNKIES</span><span></span><button data-close>Cerrar ×</button></header><section class="order-success"><span>✓</span><p>Pedido demo registrado</p><h2>Ya casi huele<br>a cookies.</h2><strong>'+code+'</strong><p>Esta demostración no realiza cobros ni envía tus datos. En la versión comercial, aquí aparecería la confirmación real de Funkies.</p><div><a href="https://www.instagram.com/funkies.pe/" target="_blank" rel="noreferrer">Confirmar disponibilidad en Instagram ↗</a><button data-reset>Volver a la tienda</button></div></section></div>';
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button,a"); if(!t)return;
+  if(t.dataset.add){cart[t.dataset.add]=(cart[t.dataset.add]||0)+1;sync();}
+  if(t.id==="cart-button")showDrawer();
+  if(t.dataset.close!==undefined)closePortal();
+  if(t.dataset.qty){cart[t.dataset.qty]=Math.max(0,(cart[t.dataset.qty]||0)+Number(t.dataset.delta));if(!cart[t.dataset.qty])delete cart[t.dataset.qty];sync();showDrawer();}
+  if(t.dataset.boxqty){boxes=boxes.map(b=>b.id===t.dataset.boxqty?{...b,quantity:Math.max(0,b.quantity+Number(t.dataset.delta))}:b).filter(b=>b.quantity);sync();showDrawer();}
+  if(t.dataset.pack)showPack(Number(t.dataset.pack));
+  if(t.dataset.flavor){const id=t.dataset.flavor, count=Object.values(packDraft).reduce((a,b)=>a+b,0), delta=Number(t.dataset.delta);if(delta>0&&count>=packSize)return;packDraft[id]=Math.max(0,(packDraft[id]||0)+delta);if(!packDraft[id])delete packDraft[id];renderPack();}
+  if(t.dataset.addpack!==undefined){const count=Object.values(packDraft).reduce((a,b)=>a+b,0);if(count!==packSize)return;const p=PACKS.find(x=>x.size===packSize);boxes.push({id:String(Date.now()),size:p.size,price:p.price,quantity:1,flavors:{...packDraft}});sync();showDrawer();}
+  if(t.dataset.checkout!==undefined)showCheckout();
+  if(t.dataset.next){step=Number(t.dataset.next);renderCheckout();}
+  if(t.dataset.fulfillment){fulfillment=t.dataset.fulfillment;renderCheckout();}
+  if(t.dataset.payment){payment=t.dataset.payment;renderCheckout();}
+  if(t.dataset.finish!==undefined)success();
+  if(t.dataset.reset!==undefined){cart={};boxes=[];sync();closePortal();}
+  if(t.dataset.filter){document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===t));document.querySelectorAll(".product-card").forEach(x=>x.style.display=t.dataset.filter==="Todos"||x.dataset.category===t.dataset.filter?"":"none");}
+});
+document.addEventListener("change",e=>{if(e.target.id==="district"){district=e.target.value;renderCheckout();}});
+portal.addEventListener("mousedown",e=>{if(e.target.classList.contains("overlay"))closePortal();});
+sync();
+</script></body></html>
